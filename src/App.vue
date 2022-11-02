@@ -1,5 +1,13 @@
 <template>
-    <div class="container my-5">
+
+
+
+    <div class="app-wrapper">
+        <h1 class="alert alert-secondary logo-wrap">
+            <img class="logo" src="@/assets/img/cat-logo.png" alt="logo"> Cat Town
+        </h1>
+
+
         <ImgCp :title="title" :src="src"/>
         <ul class="thumb-wrap">
             <ThumbCp v-for="v in cat" :key="v.id" :img="v"  @@change="onChange"/>
@@ -80,15 +88,34 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
 //각 컴포넌트에서 scoped의 역할은 고유값을 던져줄 수 있음 ===> .thumb-wrap[data-v-7ba5bd90]  ===> 다른 컴포넌트에서 동일한 명칭을 사용한다고 하더라도 겹쳐서 중복되는 현상을 막을 수 있음
 //초기값을 설정하기 위해서는 scoped를 제거해야 전역으로 스타일을 적용할 수 있음. (예시)  ul, ol{padding:0; margin:0; list-style:none;}
-    .thumb-wrap{
-        padding: .5em;
-        border: 1px solid #efefef;
-        border-radius: .5em;
+.app-wrapper {
+	max-width: 400px;
+	margin: 2em auto 1em auto;
+
+	.logo-wrap {
+		font-size: 1.25em;
+        display: flex;
+        align-items: center;
+		.logo {
+			display: block;
+            height: 20px;
+            padding-right: 20px;
+
+
+		}
+	}
+	.thumb-wrap {
+		border: 1px solid #9A8B4F;
+		border-radius: .5em;
+		padding: .5em;
         display: flex;
         column-gap: 10px;
-        width: 100%;
-    }
+
+		//@include flex($jc: space-between)
+	}
+}
 </style>
