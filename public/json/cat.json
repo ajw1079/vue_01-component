@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "src": "/img/cat_01.jpeg",
+        "title": "Cute Cat1",
+        "description": "귀여운 아기 고양이1",
+        "age": "3month"
+    },
+    {
+        "id": 2,
+        "src": "/img/cat_02.jpeg",
+        "title": "Cute Cat2",
+        "description": "귀여운 아기 고양이2",
+        "age": "5month"
+    },
+    {
+        "id": 3,
+        "src": "/img/cat_03.jpeg",
+        "title": "Cute Cat3",
+        "description": "귀여운 아기 고양이3",
+        "age": "2month"
+    },
+    {
+        "id": 4,
+        "src": "/img/cat_04.jpeg",
+        "title": "Cute Cat4",
+        "description": "귀여운 아기 고양이4",
+        "age": "4month"
+    }
+]
