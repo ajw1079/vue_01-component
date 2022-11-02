@@ -2,7 +2,7 @@
     <div class="container my-5">
         <ImgCp :title="title" :src="src"/>
         <ul class="thumb-wrap">
-            <ThumbCp v-for="v in cat" :key="v.id" :img="v" />
+            <ThumbCp v-for="v in cat" :key="v.id" :img="v"  @@change="onChange"/>
             <!-- key라는 속성으로 고유값으로 갖고 있다가 Virtual DOM이 re-rendering을 할 수 있음 -->
         </ul>
     </div>
@@ -15,11 +15,11 @@
 */
 import axios from 'axios'
 import ImgCp from './components/ImgCp.vue'
-import ThumbCP from './components/ThumbCp.vue'
+import ThumbCp from './components/ThumbCp.vue'
 
 export default {
     name: 'App',
-    components: {ImgCp, ThumbCP},
+    components: {ImgCp, ThumbCp},
     data() {
         return {
             cat : [],
@@ -27,11 +27,18 @@ export default {
             src: ''
         }
     },
+    methods : {
+        onChange(v) {
+            console.log(v);
+            this.src = v.src;
+            this.title = v.title;
+        }
+    },
 
     //#1
-    beforeCreate(){
-        console.log("beforeCreate");  //컴포넌트를 불러오기 전에 이벤트를 발생시킨다. 거의 사용할 일이 없음
-    },
+    // beforeCreate(){
+    //     console.log("beforeCreate");  //컴포넌트를 불러오기 전에 이벤트를 발생시킨다. 거의 사용할 일이 없음
+    // },
     //#2. [중요] 데이터를 불러오기 등의 DOM 으로 접근하기 전에 데이터를 가져온다. 데이터를 변수에 등록 (axios 또는 ajax를 통해 데이터를 가져온다.)
     async created() {
         console.log("create");  //html과 css가 생성되기 전에 실행된다.
@@ -51,7 +58,7 @@ export default {
     },
     //#5. DOM이 완성된 상태에서 데이터가 변할 때, 진행한다.
     beforeUpdate(){
-        console.log("beforeMount");
+        console.log("beforeUpdate");
     },
     //#6. [중요] 가상(virtual)의 DOM re-rendering / patch를 통해 DOM 내부의 데이터값을 변경하고 난 후에 진행한다.
     updated() {
@@ -81,6 +88,7 @@ export default {
         border: 1px solid #efefef;
         border-radius: .5em;
         display: flex;
-        width: 101%;
+        column-gap: 10px;
+        width: 100%;
     }
 </style>
